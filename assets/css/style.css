@@ -22,6 +22,26 @@
     background-color: #525252;
 }
 
+/*---------------------special margins/paddings/text*/
+
+h1,h2,h3,h4 {
+    margin: 0;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.general-sub {
+    font-family: "Exo", sans-serif;
+    font-weight: 300;
+    color: #fafafa;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
 /*---------------------heading*/
 header {
     margin: 0;
@@ -114,4 +134,25 @@ header {
 .hvr-sweep-to-bottom::before {
     background: rgba(0, 0, 0, 0.2);
     height: 120px;
+}
+
+
+/*---------------------footer*/
+
+footer {
+    background-color: #525252;
+    color: #fafafa;
+    min-height: 120px;
+    margin: 0;
+}
+
+.cv-pdf i {
+    font-size: 18px;
+    color: #fafafa;
+    text-align: center;
+    padding-left: 5px;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
