@@ -38,6 +38,12 @@
 .ui-menu-color-download {
     background-color: #525252;
 }
+.ui-menu-color-interests {
+    background-color: red;
+}
+.ui-menu-color-github {
+    background-color: darkblue;
+}
 
 
 /*---------------------special margins/paddings/text*/
