@@ -63,8 +63,12 @@
                 <h5 class="uppercase text-center">You can also search on other user profiles</h5>
 
                 <div class="center-form">
+                    <!--add the box for searching the username with the fucntion oninput
+                    function will run every time user imput something-->
                     <input type="text" id="gh-username" value="octocat" oninput="fetchGitHubInformation()" />
+                    <!--first div: present user information-->
                     <div id="gh-user-data"></div>
+                    <!--second div: present repository information-->
                     <div id="gh-repo-data"></div>
 
                 </div>
