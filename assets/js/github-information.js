@@ -1,4 +1,27 @@
 
+//function return the object returned from the github api
+//returned in a formatted form
+function userInformationHTML(user) {
+    // return the user public display name and the public profile
+    return `
+        <h2>${user.name}
+            <span class="small-name">
+                (@<a href="${user.html_url}" target="_blank>${user.login}</a>
+            </span>
+        </h2>
+        <div class="gh-content">
+            <div class="gh-avatar">
+                <a href="${user.html_url} target="_blank">
+                    <img src="${user.avatar_url}" width="80" alt="${user.login}" />
+                </a>
+            </div>
+            <p> followers: ${user.followers} - following ${user.following} <br> Repos: ${user.public_repos}</p>
+        </div>
+        `
+}
+
+
+
 //function called in oninput event
 function fetchGitHubInformation(event) {
     //1.create a variable to hold the username typed with jquery
@@ -24,7 +47,7 @@ function fetchGitHubInformation(event) {
         //display the information in the div gh-user-data using the fucntion response()
         function(response) {
             var userData = response;
-            $("gh-user-data").html(userinformationHTML(userData));
+            $("gh-user-data").html(userInformationHTML(userData));
         }, function(errorResponse) {
             //add function that handle the errors 
             if (errorResponse.status === 404) {
