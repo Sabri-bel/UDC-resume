@@ -21,10 +21,35 @@ function userInformationHTML(user) {
         `;
 }
 
+function repoInformationHTML(repos) {
+    if (repos.length == 0) {
+        return `<div class="clearfix repo-list">No repos!</div>`;
+    }
+
+    var listItemsHTML = repos.map(function(repo) {
+        return `<li>
+                    <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                </li>`
+    });
+
+    return `<div class="clearfix repo-list">
+                <p>
+                    <strong>Repo list:</strong>
+                </p>
+                <ul>
+                    ${listItemsHTML.join("\n")}
+                </ul>
+            </div>`
+}
+
 
 
 //function called in oninput event
 function fetchGitHubInformation(event) {
+    //set the initial information to an empty value
+    $("#gh-user-data").html("");
+    $("gh-repo-data").html("");
+
     //1.create a variable to hold the username typed with jquery
     var username = $("#gh-username").val();
     //2. create the if statement if the username fields is empty
@@ -43,11 +68,15 @@ function fetchGitHubInformation(event) {
     $.when(
         //when get a response from the api then run a function below
         //when get a function as argument getJSON() with the github api address
+        //1st json: retrieve the username
         $.getJSON(`https://api.github.com/users/${username}`),
+        //2nd json retrieve the repository for that user
         $.getJSON(`https://api.github.com/users/${username}/repos`)
     ).then(
         //display the information in the div gh-user-data using the fucntion response()
+        // 2 arguments required: one for the username and one for the repository
         function(firstResponse, secondResponse) {
+            //index is required is there are 2 arguments
             var userData = firstResponse[0];
             var repoData = secondResponse[0];
             $("#gh-user-data").html(userInformationHTML(userData));
@@ -65,3 +94,5 @@ function fetchGitHubInformation(event) {
             }
         });
 }
+//fetch the information of the placeholder octocat 
+$(document).ready(fetchGitHubInformation);
